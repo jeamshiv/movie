@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Movie</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#065af3">
+	<link rel="stylesheet" href="css/style.css?ver=1">
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/main.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/251c1ad996.js"></script>
+	
+</head>
+<body>
+	<div class="container" id="home_search" style="margin-bottom: 50px;">
+		<div class="row">
+
+		<div class="col-lg-6 col-lg-offset-3">
+
+		<div id="need2hide">
+			<h1 class="text-center" style="color: white; margin-top: 180px; font-family: Lucida Calligraphy;">Search Movie Name</h1>
+		</div>
+
+		<div class="wrapper">
+			<form id="search_form">
+			<div class="input-data">
+				<input type="text" required="" id="search_text" autocomplete="off">
+				<label for="name">Search Movie</label>
+			</div>
+			<div class="text-center">
+				<button type="submit" class="search_btn">Search</button>
+			</div>
+			</form>
+		</div>
+		</div><!-- col lg end -->
+		</div>
+	</div>
+
+	
+
+	<div class="container">
+		<div class="row" id="movie_list"></div>
+	</div>
+
+
+</body>
+</html>

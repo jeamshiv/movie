@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Movie Details</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#065af3">
+	<link rel="stylesheet" href="css/style.css?ver=1">
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/main.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/251c1ad996.js"></script>
+	<style>
+		body{color: white;}
+
+	</style>
+	
+</head>
+<body>
+
+	<div class="container">
+		<div class="page-header" id="movie_title"></div>
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-0 col-xs-8 col-xs-offset-2">
+				<div id="poster"></div>
+			</div>
+
+			
+			<div class="col-lg-9 col-lg-offset-0 col-xs-10 col-xs-offset-1">
+				<div id="movie"></div>
+			</div>
+		</div>
+		
+			
+		<div class="text-center" style="margin-bottom: 50px;">
+				<a href="index.html" class="search_btn" style="">Back To Search!</a>
+			</div>
+	</div>
+
+
+
+<script>
+	$(document).ready(function (event) {
+		var urlParams = new URLSearchParams(window.location.search);
+		 var movie_id = urlParams.get('movie_id');
+		/*alert(movie_id);*/
+
+
+		
+
+		var url = "http://www.omdbapi.com?apikey=ea49aac1";
+
+		$.ajax({
+				method: 'GET',
+				url: url+"&i="+movie_id,
+				success: function (data) {
+					console.log(data);
+
+			var movie_details = `<h1 class="text-center">${data.Title}</h1>`;
+			$("#movie_title").html(movie_details);
+
+			var poster = `<div class="text-center"><img class="img-responsive" src="${data.Poster}" alt="No Movie Poster Available" onerror="this.onerror=null; this.src='assets/not_available.png'"></div>`;
+			$("#poster").html(poster);
+
+			var movie_rating = `
+				<div class="container" style="width: 255px; margin-top: 20px;">
+					<div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" arial-valuenow="${data.imdbRating*10}" arial-valuemin="50" style="width: ${data.imdbRating*10}%;"><div style="color: #000;"><b>Ratings: ${data.imdbRating}</b></div></div></div>
+				</div>
+			`;
+
+			$("#poster").append(movie_rating);
+
+
+
+			var details = `
+			<h2>${data.Title}</h2>
+			<h3>${data.Genre}</h3>
+			<h3>Realse Date : ${data.Released}</h3>
+			<h3>Movie Runtime : ${data.Runtime}</h3>
+			<h3>Language : ${data.Language}</h3>
+			<h3>Production : ${data.Production}</h3>
+			<p style="font-size: 18px; margin-top: 20px;"><b>Actors</b> : ${data.Actors}</p>
+			<p style="font-size: 18px; margin-top: 20px;"><b style="font-size: 20px;">StoryLine</b><br>${data.Plot}<br>
+			<a href="https://www.imdb.com/title/${data.imdbID}/" target="_blank">Read More...</a></p>
+
+			<div class="text-center" style="margin-bottom: 50px;">
+			<p>Imdb Votes : ${data.imdbVotes}</p>
+			<a href="https://www.imdb.com/title/${data.imdbID}/" target="_blank" class="btn btn-warning">View in IMDB Website</a></div>
+			
+
+			`
+			$("#movie").html(details);
+					
+				}
+			});/*ajax process end*/
+
+
+
+
+
+	})
+</script>
+
+</body>
+</html>
