@@ -86,5 +86,10 @@
         min-height: 300px;
         box-shadow: 0 0 8px 2px rgba(0,0,0,0.5);
         }
+
+      @media(max-width: 768px){
+        #progress{width: 200px !important;
+                  }
+      }
     
 
