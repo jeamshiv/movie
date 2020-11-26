@@ -5,7 +5,7 @@
 
 			var movie = $("#search_text").val();
 
-			var url = "http://www.omdbapi.com?apikey=ea49aac1";
+			var url = "https://www.omdbapi.com?apikey=ea49aac1";
 
 			$.ajax({
 					method: 'GET',
